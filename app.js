@@ -1,5 +1,5 @@
 const express = require('express');
-const port = 7500 || process.env.port;
+const port = process.env.port || 7500;
 const app = new express();
 
 app.get('/',(request,response)=>{
