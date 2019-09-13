@@ -7,6 +7,6 @@ app.get('/',(request,response)=>{
     });
 });
 
-app.listen(process.env.port || 8080,()=>{
+app.listen(process.env.port,()=>{
     console.log(`App started`);
 })
