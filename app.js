@@ -1,5 +1,4 @@
 const express = require('express');
-const port = process.env.port || 7500;
 const app = new express();
 
 app.get('/',(request,response)=>{
@@ -8,6 +7,6 @@ app.get('/',(request,response)=>{
     });
 });
 
-app.listen(port,()=>{
-    console.log(`working at ${port}`);
+app.listen(process.env.port || 8080,()=>{
+    console.log(`App started`);
 })
