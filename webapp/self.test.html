@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title></title>
+        <link rel="shortcut icon" href="images/logo.png" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow|Permanent+Marker&display=swap" rel="stylesheet">
+        <style>
+        *{
+            font-family: 'PT Sans Narrow', sans-serif;
+        }
+        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <br/>
+            <button class="btn btn-dark">Test api</button>
+        </div>
+        
+
+    </body>
+    <script>
+    function TestApi(){
+        $.ajax({
+            type:'GET',
+            dataType:'POST',
+            url:'https://sutirtha-free-api-boss.herokuapp.com/api/jboss',
+            success:()=>{
+                console.log('ok');
+            },
+            error:()=>{
+
+            }
+        })
+    }
+
+    $('button.btn-dark').on('click',TestApi);
+    </script>
+</html>

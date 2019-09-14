@@ -3,9 +3,13 @@
         <title>
             Sutirtha Mock API Base
         </title>
+        <link rel="shortcut icon" href="images/logo.png" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow|Permanent+Marker&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        
         <style>
         *{
             font-family: 'PT Sans Narrow', sans-serif;
@@ -23,36 +27,70 @@
             background-image: url('https://static01.nyt.com/images/2016/12/14/well/move/14physed-running-photo/14physed-running-photo-facebookJumbo.jpg');
             background-blend-mode: multiply;
             background-attachment: fixed;
+            background-repeat: repeat-x;
         }
         </style>
     </head>
     <body class="master-bg">
             <br/>
             <br/>
-            <br/>
-            <br/>
+            
 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-7">
-                    <div class="logo text-light">
+                    <div >
+                        
+                        <span class="logo text-light">
                         JSON Mock API
+                        </span>                         
                     </div>
                 </div>
                 <div class="col-md-5">
-                        <h3 class="text-light">Welcome to Mock api base</h3>
+                        <div class="row">
+                            <div class="col-md-2"><img width="100%" src="images/pic.jpg" class="rounded"/><br/></div>    
+                            <h3 class="text-light col-md-8">Welcome to Mock api base</h3>
+                        </div>
+                        
                         <hr class="bg-light"/>
                         <h5 class="text-light">“I cannot access JSON data from localhost and the reason is the nasty CORS issue”</h5> 
                         <p class="text-light">
                                 
-                                <br/>It’s a pretty common in javascript development. So an easy solution for them. 
+                                <br/>It’s a pretty common in javascript development. So an easy solution for them is here. 
                                 <br/>Use these apis for your testing and please don’t worry about the nightmare of CORS issue.
                         </p> 
-                        <button class="btn btn-light">Open API Details</button>
+                       
+                        <div>
+                            <button class="btn btn-dark" onclick="showTokens()">Get valid tokens</button>
+                            <button class="btn btn-dark">Open API Details</button>
+                        </div>
+                        <hr class="bg-warning"/>
+                        <div class="container-fluid rounded" id="tokenSet" style="display: none; padding:10px; background:rgba(255,255,255,0.3)">
+                               <h5>Tokens</h5>
+                               <div id="tabset">
+
+                               </div>
+                        </div>
+                        
+                        
                 </div>
             </div>
             
                        
         </div>
     </body>
+    <script>
+    function showTokens(){
+        $('#tokenSet').fadeToggle();
+        $.getJSON('/mockapibase/api/jsondata/api/token/list',function(data){
+            var msg='';
+            msg+='<table class="table">';
+            data.forEach(function(data){
+                msg+='<tr><td><code class="text-light">'+data+'</code></td></tr>';
+            });
+            msg+='</table>';
+            $('#tabset').html(msg);
+        })
+    }
+    </script>
 </html>
