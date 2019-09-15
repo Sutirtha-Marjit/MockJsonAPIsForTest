@@ -18,9 +18,20 @@ const ActivateAPI = (app, apibaseURL) => {
     return res;
   };
 
-  const headerValidator = (header) => {
-    if (header === '')
-      return false;
+  const headerValidator = (headerValue) => {
+      let valid = false;
+      if(headerValue){
+        console.log('Authorization found');
+        const data = require('../token/token');
+        if(data.indexOf(headerValue)>-1){
+          valid = true;
+        }
+      }
+      if(!valid){
+        console.log('Authorization failed');
+      }
+      
+      return valid;
   };
 
   const middleWareGeneral = (req, res, next) => {
@@ -28,13 +39,13 @@ const ActivateAPI = (app, apibaseURL) => {
     if (req.url.indexOf('/api/token/list') > -1) {
       next();
     } else {
-      const header = req.header('token');      
+      const header = req.header('Authorization');      
       if (headerValidator(header)) {
         next();
       } else {
         const e = Object.assign({}, RejectionErrorObj);
         e.error.type = 'TOKEN_MISSING';
-        e.meta.url = 'SomeURL';
+        e.meta.url = req.url;
         res.json(e);
       }
     }
@@ -49,7 +60,7 @@ const ActivateAPI = (app, apibaseURL) => {
 
   if (app) {
     app.use(middleWareGeneral);
-    //WaterAPI(app,apibaseURL);
+    WaterAPI(app,apibaseURL);
   }
 };
 

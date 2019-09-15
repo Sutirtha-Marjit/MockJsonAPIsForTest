@@ -13,19 +13,25 @@
         <style>
         *{
             font-family: 'PT Sans Narrow', sans-serif;
+            transition: all 0.2s ease-out;  
         }
 
         .logo{
             font-family: 'Permanent Marker', cursive;            
             font-size: 180px;
             line-height: 120px;
+            user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
         }
         .master-bg{
             background-size: 100% auto;
             background-position: center center;
             background-color: #dc3545;
             background-image: url('https://static01.nyt.com/images/2016/12/14/well/move/14physed-running-photo/14physed-running-photo-facebookJumbo.jpg');
-            background-blend-mode: multiply;
+            background-blend-mode:darken;
             background-attachment: fixed;
             background-repeat: repeat-x;
         }
@@ -38,7 +44,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-5">
                     <div >
                         
                         <span class="logo text-light">
@@ -46,17 +52,17 @@
                         </span>                         
                     </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-7">
                         <div class="row">
-                            <div class="col-md-2"><img width="100%" src="images/pic.jpg" class="rounded"/><br/></div>    
-                            <h3 class="text-light col-md-8">Welcome to Mock api base</h3>
+                            <div class="col-md-2"><img width="60%" src="images/pic.jpg" class="rounded"/><br/></div>    
+                            <h1 class="text-light col-md-8">Welcome to Mock api base</h1>
                         </div>
                         
                         <hr class="bg-light"/>
                         <h5 class="text-light">“I cannot access JSON data from localhost and the reason is the nasty CORS issue”</h5> 
                         <p class="text-light">
                                 
-                                <br/>It’s a pretty common in javascript development. So an easy solution for them is here. 
+                                It’s a pretty common in javascript development. So an easy solution for them is here. 
                                 <br/>Use these apis for your testing and please don’t worry about the nightmare of CORS issue.
                         </p> 
                        
@@ -64,9 +70,11 @@
                             <button class="btn btn-dark" onclick="showTokens()">Get valid tokens</button>
                             <button class="btn btn-dark">Open API Details</button>
                         </div>
-                        <hr class="bg-warning"/>
-                        <div class="container-fluid rounded" id="tokenSet" style="display: none; padding:10px; background:rgba(255,255,255,0.3)">
-                               <h5>Tokens</h5>
+                        
+                        <div class="container-fluid rounded" id="tokenSet" style="display: none; padding:10px; background:rgba(0,0,0,0.9)">
+                               <h5 class="text-light">Tokens</h5>
+                               
+                               <br/>
                                <div id="tabset">
 
                                </div>
@@ -84,7 +92,7 @@
         $('#tokenSet').fadeToggle();
         $.getJSON('/mockapibase/api/jsondata/api/token/list',function(data){
             var msg='';
-            msg+='<table class="table">';
+            msg+='<table class="table"><tr><td><strong class="text-primary">Use in request header as : </strong> <code>{Authorization:[TOKEN]}</code></td></tr>';
             data.forEach(function(data){
                 msg+='<tr><td><code class="text-light">'+data+'</code></td></tr>';
             });
