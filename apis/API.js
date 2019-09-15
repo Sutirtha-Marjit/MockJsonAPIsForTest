@@ -15,6 +15,7 @@ const ActivateAPI = (app, apibaseURL) => {
       res.header(h, headers[h]);
     }
     res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers','Authorization');
     return res;
   };
 

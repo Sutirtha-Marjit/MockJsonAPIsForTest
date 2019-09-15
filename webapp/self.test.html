@@ -14,6 +14,8 @@
     </head>
     <body>
         <div class="container-fluid">
+                <br/>
+                <input type="text" id="token" class="form-control form-control-sm" placeholder="token"/>
             <br/>
             <input type="text" id="apiurl" class="form-control form-control-sm"/>
             <br/>
@@ -27,7 +29,7 @@
         $.ajax({
             type:'GET',
             dataType:'POST',
-            headers:{Authorization:'1568514141703APITOKEN294SUTIRTHA1283287XCRTA348800'},
+            headers:{Authorization:$('#token').val()},
             url:$('#apiurl').val(),
             success:()=>{
                 console.log('ok');
