@@ -1,3 +1,4 @@
+const URI = require('../URI');
 const getCommonDataModel = require('../CommonDataModel');
 const RandomData = require('../RandomData');
 const waterTypes = [
@@ -58,7 +59,7 @@ const waterTypes = [
     'ExceptionalHealth',
     'WPlus'
 ];
-
+const ltrs = [0.5,1,2,5,20,40];
 const brandPhoto = [
     'https://tinyurl.com/y66q3fcy',
     'https://tinyurl.com/y5ryrnjv',
@@ -74,19 +75,25 @@ const brandPhoto = [
 
 const WaterAPI = (app,apibaseURL)=>{
 
-    app.get(`${apibaseURL}/water/brands`,(req,res)=>{
+    app.get(URI.Water.availableUnits,(req,res)=>{
+        const dataModel = getCommonDataModel();
+        dataModel.data = {units:ltrs};
+        res.json(dataModel);
+    });
+
+    app.get(URI.Water.brands,(req,res)=>{
         const dataModel = getCommonDataModel();
         dataModel.data = {brands:waterTypes};
         res.json(dataModel);
     });
 
-    app.get(`${apibaseURL}/water/list`,(req,res)=>{
+    app.get(URI.Water.list,(req,res)=>{
         const dataModel = getCommonDataModel();
         dataModel.data = {water:[]};
         
        
 
-        const ltrs = [0.5,1,2,5,20,40];
+        
         
         waterTypes.forEach((brandName)=>{
 

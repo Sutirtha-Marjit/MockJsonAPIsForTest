@@ -1,10 +1,18 @@
 const fs = require('fs');
+const RandomData = require('../apis/RandomData');
 const maxToken=5;
 const generateTokens = ()=>{
 
     const tokenArr = [];
     for(let i=0;i<5;i++){
-        let t = `${new Date().getTime()}APITOKEN${Math.ceil(Math.random()*1500)}SUTIRTHA${Math.ceil(Math.random()*1500000)}XCRTA${Math.ceil(Math.random()*700000)}`;
+        let t=0;
+        const s = RandomData.getRanDomNumberWithRange(0,10);
+        if(s>5){
+            t = `${new Date().getTime()}APITOKEN${Math.ceil(Math.random()*1500)}SUTIRTHA${Math.ceil(Math.random()*1500000)}XCRTA${Math.ceil(Math.random()*700000)}`;
+        }else{
+            t = `${Math.ceil(Math.random()*150)}APITOKEN${Math.ceil(Math.random()*1500)}SUTIRTHA${Math.ceil(Math.random()*1500000)}XCRTA${Math.ceil(Math.random()*700000)}`;
+        }
+        
         tokenArr.push(t.trim());
     }
 

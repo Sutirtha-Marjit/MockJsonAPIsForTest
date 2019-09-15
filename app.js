@@ -1,8 +1,9 @@
+process.apibaseURL = '/mockapibase/api/jsondata';
 const express = require('express');
 const generateTokenFile = require('./token/GenerateToken');
 const app = new express();
 const ActivateAPI = require('./apis/API');
-const apibaseURL = '/mockapibase/api/jsondata';
+
 
 generateTokenFile('./token/token.json');
 
@@ -17,6 +18,6 @@ app.get('/welcome',(request,response)=>{
 app.listen(app.get('port'),()=>{
   console.log(`App is running at ${app.get('port')}`);
   console.log('Activating the api');
-  ActivateAPI(app,apibaseURL);
+  ActivateAPI(app,process.apibaseURL);
 });
 
