@@ -37,11 +37,14 @@ const ActivateAPI = (app, apibaseURL) => {
 
   const middleWareGeneral = (req, res, next) => {
     res = commonResponseHeaderAttachment(res);
-    if (req.url.indexOf('/api/token/list') > -1 || req.url.indexOf('/api/details/list')) {
+    if (req.url.indexOf('/api/token/list') > -1 || req.url.indexOf('/api/details/list')> -1) {
+      console.log('Default url paased');
       next();
     } else {
-      const header = req.header('Authorization');      
-      if (headerValidator(header)) {
+      const header = req.header('Authorization');    
+      const isHeaderValid = headerValidator(header);
+      console.log(`Request of [${req.url}] is ${isHeaderValid}`);
+      if (isHeaderValid) {
         next();
       } else {
         const e = Object.assign({}, RejectionErrorObj);
