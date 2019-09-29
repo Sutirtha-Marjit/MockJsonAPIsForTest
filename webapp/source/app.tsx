@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { DynamicBackground } from './components/dynamic.background.component';
 
 export class Application extends React.Component{
     constructor(props:any){
@@ -7,11 +8,9 @@ export class Application extends React.Component{
     }
 
     render(){
-        const rootTSX = <div className='container-fluid'>
-            <br/>
-            <h3 className="text-primary">Welcome to React TSX App</h3>
-            <hr/>
-            <small>App is configured with TypeScript and React</small>
+        const rootTSX =         
+        <div>
+            <DynamicBackground></DynamicBackground>    
         </div>;
 
         return rootTSX;

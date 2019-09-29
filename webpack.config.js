@@ -7,7 +7,7 @@ const bootstrapCSSURL= 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/b
 const dynamicHTMLGenerator = new HtmlWebpackPlugin({
     title: 'Web Application',
     minify: true,
-    favicon:path.resolve(__dirname,'./webapp/source/images/icon.png'),
+    favicon:path.resolve(__dirname,'./webapp/source/images/icon.02.jpg'),
     template:path.resolve(__dirname,'./webapp/source/index.html')
     
 });
