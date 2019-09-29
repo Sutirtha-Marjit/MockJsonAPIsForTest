@@ -10,7 +10,7 @@
     "start": "npm run frontend-build && npm run app-start",
     "app-start":"node app.js",
     "frontend-start": "webpack-dev-server",
-    "frontend-build": "webpack",
+    "frontend-build": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
