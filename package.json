@@ -7,7 +7,7 @@
   },
   "main": "app.js",
   "scripts": {
-    "start": "npm run frontend-build && npm run app-start",
+    "start": "npm install && npm run frontend-build && npm run app-start",
     "app-start":"node app.js",
     "frontend-start": "webpack-dev-server",
     "frontend-build": "webpack -p",
@@ -24,6 +24,12 @@
   },
   "homepage": "https://github.com/Sutirtha-Marjit/MockJsonAPIsForTest#readme",
   "devDependencies": {
+    
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1",
     "@types/lodash": "^4.14.141",
     "@types/react": "^16.9.3",
     "@types/react-dom": "^16.9.1",
@@ -38,10 +44,5 @@
     "webpack": "^4.41.0",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.1"
-  },
-  "dependencies": {
-    "express": "^4.17.1",
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1"
   }
 }
